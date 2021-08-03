@@ -1,0 +1,44 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "name": "Badlands",
+      "director": "Terrence Malick",
+      "year": "1990",
+      "picture": "Badlands.jpg",
+      "stars": 5
+    },
+    {
+      "id": 2,
+      "name": "The Good, the Bad and the Ugly",
+      "director": "Sergio Leone",
+      "year": 1966,
+      "picture": "Eastwood.jpg",
+      "stars": 4
+    },
+    {
+      "id": 3,
+      "name": "Blade Runner",
+      "director": "Ridley Scott",
+      "year": 1982,
+      "picture": "BladeRunner.jpg",
+      "stars": 4
+    },
+    {
+      "id": 4,
+      "name": "Blade Runner 2049",
+      "director": "Dennis Villeneuve",
+      "year": 2017,
+      "picture": "BladeRunner2049.jpg",
+      "stars": 2
+    },
+    {
+      "id": 5,
+      "name": "Pulp Fiction",
+      "director": "Quentin Tarantino",
+      "year": 1994,
+      "picture": "PulpFiction.jpg",
+      "stars": 3
+    }
+  ]
+}
