@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Loader from '../components/loader';
 import StarRatings from 'react-star-ratings';
-
+import axios from 'axios';
 
 
 function PokemonsDetail({ match }) {
@@ -15,6 +16,34 @@ function PokemonsDetail({ match }) {
     const [name, setName] = useState();
     const [year, setYear] = useState();
     const [director, setDirector] = useState();
+    const [rating, setRating] = useState();
+    const [file, setFile] = useState(null);
+
+
+    // On file upload (click the upload button)
+    function onChangeHandler(event) {
+
+        setFile(event.target.files[0])
+        console.log(event.target.files[0])
+
+    };
+
+    function onClickHandler(event) {
+        var re = /(?:\.([^.]+))?$/;
+        var ext = re.exec(file.name)[1];
+
+        const data = new FormData()
+        data.append('file', file, `${name}.${ext}`)
+
+        axios.post("http://localhost:8000/upload", data, { // receive two parameter endpoint url ,form data 
+        })
+            .then(res => { // then print response status
+                console.log(res.statusText)
+                changeData(null, 'picture')
+
+            })
+    }
+
 
 
     function toggleInput(input) {
@@ -68,11 +97,7 @@ function PokemonsDetail({ match }) {
     }, [match.params.id])
 
 
-    const [rating, setRating] = useState();
-
-
     function changeData(e, input, newRating) {
-        
 
         switch (input) {
             case 'title':
@@ -92,6 +117,12 @@ function PokemonsDetail({ match }) {
                 break;
             case 'rating':
                 movie.stars = newRating
+                break;
+            case 'picture':
+                var re = /(?:\.([^.]+))?$/;
+                var ext = re.exec(file.name)[1];
+                movie.picture = `${name}.${ext}`
+                setPoster(`../posters/${name}.${ext}`)
                 break;
             default:
                 break;
@@ -116,11 +147,26 @@ function PokemonsDetail({ match }) {
             {movie ? [
                 <div className="row">
                     <div className="col s12 m8 offset-m2">
-                        <div className="card hoverable">
-                            <div className="card-image">
+                        <div className="card hoverable center-align">
+                            <div className="card-image" style={{
+                                display: 'inline-block',
+                                position: 'relative',
+                            }}>
                                 <img src={poster} alt={movie.name} style={{ width: '250px', margin: '0 auto' }} />
+                                <input id="files" type="file" onChange={e => onChangeHandler(e)} class="btn-floating btn-large waves-effect waves-light" style={{
+                                    visibility: 'hidden',
+                                }} />
+                                <label for="files" class="btn-floating btn-large waves-effect waves-light" style={{
+                                    position: 'absolute',
+                                    bottom: 25,
+                                    right: -25,
+                                    backgroundColor: '#009688'
+                                }}><i class="material-icons">add_a_photo</i></label>
                             </div>
                             <div className="card-stacked">
+                                <button type="button" class="btn-large waves-effect waves-light" onClick={e => onClickHandler(e)} style={{
+                                    backgroundColor: '#009688'
+                                }}>Send image</button>
                                 <div className="card-content">
                                     <table className="bordered striped">
                                         <tbody>

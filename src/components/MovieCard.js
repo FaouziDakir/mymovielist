@@ -7,8 +7,6 @@ import { useHistory } from 'react-router-dom';
 
 function MovieCard({ movie, borderColor = '#009688' }) {
 
-    const [stars, setStars] = useState(1);
-    const [poster, setPoster] = useState('default.jpg');
     const [color, setColor] = useState();
     const history = useHistory();
 

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../components/MovieCard'
-import MOVIES from '../models/mock-movie';
-
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
