@@ -6,7 +6,7 @@ import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 
 
-function PokemonsDetail({ match }) {
+function MovieDetail({ match }) {
 
     const [movie, setMovie] = useState(null);
     const [showTitleInput, setShowTitleInput] = useState(false);
@@ -230,4 +230,4 @@ function PokemonsDetail({ match }) {
     );
 }
 
-export default PokemonsDetail;
+export default MovieDetail;
