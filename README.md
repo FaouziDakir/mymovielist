@@ -2,8 +2,8 @@
 
 "npm install" pour installer les dépendances.
 
-Pour faire fonctionner l'appli il faut un terminal pour "npm start", un autre pour faire tourner json-server et un autre pour faire tourner le fichier server.js 
+Pour faire fonctionner l'appli il faut 
 
-json-server : soit avec la commande "npm run start:api" soit avec "json-server --watch src/models/db.json --port=3001".
-
-server.js : nodemon server.js
+1. un terminal pour la commande "npm start"
+2. un autre pour faire tourner json-server : soit avec la commande "npm run start:api" soit avec "json-server --watch src/models/db.json --port=3001".
+3. un autre pour faire tourner le fichier server.js : nodemon server.js
